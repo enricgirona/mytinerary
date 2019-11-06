@@ -1,0 +1,20 @@
+{
+  "name": "server",
+  "version": "0.0.0",
+  "description": "mytinerary server",
+  "main": "server.js",
+  "scripts": {
+    "start": "concurrently \"nodemon server.js\" \"cd ../client && npm start\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Enric Girona",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.8",
+    "nodemon": "^1.19.4"
+  }
+}
