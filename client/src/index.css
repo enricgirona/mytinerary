@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
@@ -9,8 +14,8 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 100vh;
-  font-size: 2.2rem;
+  height: 92vh;
+  font-size: 1.2rem;
   font-weight: 200;
   background-image: url("./img/landing.jpg");
   background-repeat: no-repeat;
@@ -21,8 +26,57 @@ body {
 .nav {
   position: fixed;
   height: 8vh;
-  background-color: #282c34;
+  background-color: rgba(44, 44, 44, 0.966);
   width: 100%;
   left: 0;
   bottom: 0;
+  border-width: 1px 0 0 0;
+  border-color: rgba(255, 255, 255, 0.527);
+  border-style: solid;
+  display: flex;
+  align-items: center;
+  padding-left: 2vh;
+}
+
+.nav > a {
+  text-decoration: none;
+  color: white;
+  font-size: 2vh;
+  margin-right: 25px;
+}
+
+.inputField {
+  height: 3vh;
+  width: 30vh;
+  font-size: 1.6vh;
+  background-color: transparent;
+  color: white;
+  font-weight: 200;
+  border: none;
+  padding: 5px;
+}
+
+::placeholder {
+  color: white;
+}
+
+:focus {
+  outline: none;
+}
+
+.country {
+  font-size: 1.5vh;
+}
+
+.city {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+  width: 30vh;
+  background-color: rgba(0, 0, 0, 0.315);
+  padding: 10px;
+  margin: 5px;
+  border-radius: 3px;
 }

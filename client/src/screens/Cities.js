@@ -1,24 +1,34 @@
-import React, { Component } from "react";
+import React from "react";
 
 import axios from "axios";
 
-export default class Cities extends Component {
+import GetCities from "../components/getcities";
+
+import Filter from "../components/filter";
+
+export default class Cities extends React.Component {
   state = {
-    cityList: []
+    cities: [],
+    search: ""
   };
 
   componentDidMount() {
     axios.get("http://localhost:5000/cities/all").then(res => {
-      const cityList = res.data;
-      this.setState({ cityList });
-      console.log(this.state.cityList[0].country);
+      this.setState({ cities: res.data });
     });
   }
 
+  changeHandler = props => {
+    this.setState(props);
+  };
+
   render() {
+    let filteredCities = this.state.cities.filter(city => city.name.toLowerCase().startsWith(this.state.search));
+
     return (
       <div>
-        <p>cities</p>
+        <Filter changeHandler={this.changeHandler} />
+        <GetCities cities={filteredCities} />
       </div>
     );
   }
