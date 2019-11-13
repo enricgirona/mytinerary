@@ -1,29 +1,29 @@
 import React from "react";
 
-import axios from "axios";
-
 import GetCities from "../components/getcities";
 
 import Filter from "../components/filter";
 
-export default class Cities extends React.Component {
+import { connect } from "react-redux";
+
+import { fetchCities } from "../store/actions/cityActions";
+
+import { bindActionCreators } from "redux";
+
+class Cities extends React.Component {
   state = {
-    cities: [],
     search: ""
   };
-
-  componentDidMount() {
-    axios.get("http://localhost:5000/cities/all").then(res => {
-      this.setState({ cities: res.data });
-    });
-  }
 
   changeHandler = props => {
     this.setState(props);
   };
 
   render() {
-    let filteredCities = this.state.cities.filter(city => city.name.toLowerCase().startsWith(this.state.search));
+    const { cities } = this.props.cities;
+    let filteredCities = cities.filter(city =>
+      city.name.toLowerCase().startsWith(this.state.search)
+    );
 
     return (
       <div>
@@ -33,3 +33,15 @@ export default class Cities extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    cities: state.cities
+  };
+};
+
+const mapDispachToProps = dispatch => {
+  return bindActionCreators(fetchCities, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispachToProps)(Cities);

@@ -1,9 +1,15 @@
-const cityReducer = (state = [], action) => {
+const initialState = {
+  cities: []
+};
+
+const cityReducer = (state = initialState, action) => {
   switch (action.type) {
     case "GET_CITIES":
-      return state;
-    case "ADD_CITY":
-      return state + 1;
+      return {
+        ...state,
+        cities: action.payload
+      };
+
     default:
       return state;
   }

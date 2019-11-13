@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Landing from "./screens/Landing.js";
 import Cities from "./screens/Cities.js";
+import Itineraries from "./screens/Itineraries.js";
 import Footer from "./components/footer";
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Landing} />
           <Route exact path="/cities" component={Cities} />
+          <Route path="/cities/:name" component={Itineraries} />
         </Switch>
         <Footer />
       </div>

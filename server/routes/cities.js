@@ -2,6 +2,8 @@ const express = require("express");
 
 const cityModel = require("../model/cityModel");
 
+const itineraryModel = require("../model/itineraryModel");
+
 const router = express.Router();
 
 router.get("/test", (req, res) => {
@@ -14,6 +16,17 @@ router.get("/all", (req, res) => {
     .find({})
     .then(files => {
       res.send(files);
+    })
+    .catch(err => console.log(err));
+});
+
+/*get itineraries within a city name*/
+router.get("/:name", (req, res) => {
+  let cityRequested = req.params.name;
+  itineraryModel
+    .find({ city: cityRequested })
+    .then(itinerary => {
+      res.send(itinerary);
     })
     .catch(err => console.log(err));
 });

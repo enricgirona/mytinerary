@@ -22,6 +22,10 @@ app.listen(port, () => {
 app.use("/cities", require("./routes/cities"));
 
 mongoose
-  .connect(db, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+  .connect(db, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true
+  })
   .then(() => console.log("Connection to Mongo DB established"))
   .catch(err => console.log(err));
