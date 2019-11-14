@@ -6,15 +6,15 @@ import { connect } from "react-redux";
 
 import { fetchItineraries } from "../store/actions/itineraryActions";
 
-import { bindActionCreators } from "redux";
-
 class Itineraries extends React.Component {
-  render() {
+  componentDidMount() {
     const {
       match: { params }
     } = this.props;
     let activeCity = params.name;
-    console.log(activeCity);
+    this.props.fetchItineraries(activeCity);
+  }
+  render() {
     const { itineraries } = this.props.itineraries;
     return (
       <div>
@@ -30,8 +30,4 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispachToProps = dispatch => {
-  return bindActionCreators(fetchItineraries, dispatch);
-};
-
-export default connect(mapStateToProps, mapDispachToProps)(Itineraries);
+export default connect(mapStateToProps, { fetchItineraries })(Itineraries);

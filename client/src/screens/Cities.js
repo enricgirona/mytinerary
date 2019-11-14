@@ -8,12 +8,14 @@ import { connect } from "react-redux";
 
 import { fetchCities } from "../store/actions/cityActions";
 
-import { bindActionCreators } from "redux";
-
 class Cities extends React.Component {
   state = {
     search: ""
   };
+
+  componentDidMount() {
+    this.props.fetchCities();
+  }
 
   changeHandler = props => {
     this.setState(props);
@@ -40,8 +42,4 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispachToProps = dispatch => {
-  return bindActionCreators(fetchCities, dispatch);
-};
-
-export default connect(mapStateToProps, mapDispachToProps)(Cities);
+export default connect(mapStateToProps, { fetchCities })(Cities);

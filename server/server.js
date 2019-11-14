@@ -20,6 +20,7 @@ app.listen(port, () => {
 });
 
 app.use("/cities", require("./routes/cities"));
+app.use("/itineraries", require("./routes/itineraries"));
 
 mongoose
   .connect(db, {
