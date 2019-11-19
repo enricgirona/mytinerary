@@ -6,7 +6,7 @@ export default class filter extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="inner">
         <input
           label="search"
           type="text"

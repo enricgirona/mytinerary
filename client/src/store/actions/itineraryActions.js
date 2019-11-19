@@ -8,3 +8,12 @@ export const fetchItineraries = activeCity => dispatch => {
     });
   });
 };
+
+export const fetchAllItineraries = () => dispatch => {
+  axios.get("/itineraries/all").then(res => {
+    dispatch({
+      type: "GET_ITINERARIES",
+      payload: res.data
+    });
+  });
+};

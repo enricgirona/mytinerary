@@ -4,20 +4,15 @@ import GetItineraries from "../components/getitineraries";
 
 import { connect } from "react-redux";
 
-import { fetchItineraries } from "../store/actions/itineraryActions";
+import { fetchAllItineraries } from "../store/actions/itineraryActions";
 
-class Itineraries extends React.Component {
+class Allitineraries extends React.Component {
   state = {
     activeCity: ""
   };
 
   componentDidMount() {
-    const {
-      match: { params }
-    } = this.props;
-    let activeCity = params.name;
-    this.props.fetchItineraries(activeCity);
-    this.setState({ activeCity: activeCity });
+    this.props.fetchAllItineraries();
   }
 
   render() {
@@ -25,7 +20,7 @@ class Itineraries extends React.Component {
     return (
       <div className="main">
         <div className="inner">
-          <p className="page-title">Itineraries in {this.state.activeCity}</p>
+          <p className="page-title">Itineraries</p>
         </div>
         <GetItineraries itineraries={itineraries} />
       </div>
@@ -39,4 +34,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { fetchItineraries })(Itineraries);
+export default connect(mapStateToProps, { fetchAllItineraries })(Allitineraries);
