@@ -66,13 +66,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: space-evenly;
-  /*height: 38px;*/
   width: 35vh;
   background-color: rgba(0, 0, 0, 0.315);
   padding: 10px;
   margin: 5px;
   border-radius: 3px;
+  overflow: hidden;
+  height: 37px;
 }
 
 a:-webkit-any-link {
@@ -187,5 +187,15 @@ ion-icon {
 }
 
 .card-collpase {
-  padding: 20px 0;
+  padding: 16px 0;
+}
+
+.open {
+  overflow: inherit;
+  height: inherit;
+}
+
+.img-card {
+  width: inherit;
+  padding-bottom: 10px;
 }

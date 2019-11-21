@@ -7,7 +7,7 @@ const activityReducer = (state = initialState, action) => {
     case "GET_ACTIVITIES":
       return {
         ...state,
-        activities: action.payload
+        activities: state.activities.concat(action.payload)
       };
 
     default:
