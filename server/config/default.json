@@ -1,4 +1,4 @@
 {
-  "mongoURI": "",
+  "mongoURI": "mongodb+srv://enricgirona:G6hJWV$KrsHWkV6@mytinerary-td6m1.mongodb.net/mytinerary?retryWrites=true&w=majority",
   "secret": "secret"
 }
