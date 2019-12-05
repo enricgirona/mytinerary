@@ -24,9 +24,6 @@ class Itineraries extends React.Component {
     const { itineraries } = this.props.itineraries;
     return (
       <div className="main">
-        <div className="inner">
-          <p className="page-title">Itineraries in {this.state.activeCity}</p>
-        </div>
         <GetItineraries itineraries={itineraries} />
       </div>
     );

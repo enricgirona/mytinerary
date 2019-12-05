@@ -5,7 +5,9 @@ export default class activities extends Component {
     return (
       <div className="activities">
         {this.props.activities.map(activity => (
-          <p key={activity._id}>{activity.title}</p>
+          <div key={activity._id} className="activity">
+            <p>{activity.title}</p>
+          </div>
         ))}
       </div>
     );

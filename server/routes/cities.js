@@ -4,6 +4,8 @@ const cityModel = require("../model/cityModel");
 
 const router = express.Router();
 
+const auth = require("../../middleware/auth");
+
 router.get("/test", (req, res) => {
   res.send({ msg: "Cities test route." });
 });
@@ -19,14 +21,10 @@ router.get("/all", (req, res) => {
 });
 
 /*post new city*/
-router.post("/post", (req, res) => {
+router.post("/post", auth, (req, res) => {
   const newCity = new cityModel({
-    name:
-      req.body.name.charAt(0).toUpperCase() +
-      req.body.name.slice(1).toLowerCase(),
-    country:
-      req.body.country.charAt(0).toUpperCase() +
-      req.body.country.slice(1).toLowerCase()
+    name: req.body.name.charAt(0).toUpperCase() + req.body.name.slice(1).toLowerCase(),
+    country: req.body.country.charAt(0).toUpperCase() + req.body.country.slice(1).toLowerCase()
   });
 
   /*save city*/

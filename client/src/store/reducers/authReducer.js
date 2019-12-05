@@ -9,7 +9,7 @@ const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case "USER_LOADING":
       return {
-        ...state,
+        token: localStorage.getItem("token"),
         isLoading: true
       };
     case "USER_LOADED":
@@ -19,14 +19,14 @@ const authReducer = (state = initialState, action) => {
         isLoading: false,
         user: action.payload
       };
-    case "LOADING_SUCCESS":
+    case "LOGIN_SUCCESS":
     case "REGISTER_SUCCESS":
+      localStorage.setItem("token", action.payload.token);
       return {
         ...state,
         ...action.payload,
-        isAuthenticated: false,
-        isLoading: false,
-        user: action.payload
+        isAuthenticated: true,
+        isLoading: false
       };
     case "AUTH_ERROR":
     case "LOGIN_FAIL":

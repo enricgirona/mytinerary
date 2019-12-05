@@ -7,10 +7,6 @@ import { connect } from "react-redux";
 import { fetchAllItineraries } from "../store/actions/itineraryActions";
 
 class Allitineraries extends React.Component {
-  state = {
-    activeCity: ""
-  };
-
   componentDidMount() {
     this.props.fetchAllItineraries();
   }
@@ -19,9 +15,6 @@ class Allitineraries extends React.Component {
     const { itineraries } = this.props.itineraries;
     return (
       <div className="main">
-        <div className="inner">
-          <p className="page-title">Itineraries</p>
-        </div>
         <GetItineraries itineraries={itineraries} />
       </div>
     );

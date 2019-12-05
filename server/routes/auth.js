@@ -2,15 +2,19 @@ const express = require("express");
 
 const userModel = require("../model/userModel");
 
+const googleModel = require("../model/googleModel");
+
 const router = express.Router();
 
 const bcrypt = require("bcryptjs");
 
-const config = require("../node_modules/config");
+const config = require("config");
 
-const jwt = require("../node_modules/jsonwebtoken");
+const jwt = require("jsonwebtoken");
 
 const auth = require("../../middleware/auth");
+
+//USER AUTHENTICATION
 
 router.post("/", (req, res) => {
   const { email, password } = req.body;
@@ -41,9 +45,9 @@ router.post("/", (req, res) => {
 });
 
 router.get("/user", auth, (req, res) => {
-  userModel
+  (userModel, googleModel)
     .findById(req.user.id)
-    .select("-password")
+    .select("-password, -googleid")
     .then(user => res.json(user));
 });
 

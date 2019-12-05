@@ -6,10 +6,11 @@ const router = express.Router();
 
 const bcrypt = require("bcryptjs");
 
-const config = require("../node_modules/config");
+const config = require("config");
 
-const jwt = require("../node_modules/jsonwebtoken");
+const jwt = require("jsonwebtoken");
 
+//USER REGISTRATION
 router.post("/", (req, res) => {
   const { name, email, password } = req.body;
 
@@ -20,7 +21,7 @@ router.post("/", (req, res) => {
   userModel.findOne({ email }).then(user => {
     if (user) return res.status(400).json({ msg: "User already exists" });
 
-    const newUser = userModel({
+    const newUser = new userModel({
       name,
       email,
       password
