@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import { NavLink } from "react-router-dom";
+
 import { logout } from "../store/actions/authActions";
 
 import { connect } from "react-redux";
@@ -7,11 +9,11 @@ import { connect } from "react-redux";
 class Logout extends Component {
   render() {
     return (
-      <div>
-        <button className="button" onClick={this.props.logout} href="#">
+      <NavLink to="/">
+        <button className="button1" onClick={this.props.logout} href="#">
           Logout
         </button>
-      </div>
+      </NavLink>
     );
   }
 }

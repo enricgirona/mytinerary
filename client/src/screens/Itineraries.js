@@ -4,8 +4,6 @@ import GetItineraries from "../components/getitineraries";
 
 import { connect } from "react-redux";
 
-import { fetchItineraries } from "../store/actions/itineraryActions";
-
 class Itineraries extends React.Component {
   state = {
     activeCity: ""
@@ -16,7 +14,6 @@ class Itineraries extends React.Component {
       match: { params }
     } = this.props;
     let activeCity = params.name;
-    this.props.fetchItineraries(activeCity);
     this.setState({ activeCity: activeCity });
   }
 
@@ -36,4 +33,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { fetchItineraries })(Itineraries);
+export default connect(mapStateToProps, null)(Itineraries);

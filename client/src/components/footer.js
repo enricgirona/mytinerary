@@ -6,11 +6,11 @@ export default class Footer extends React.Component {
       <div className="nav">
         <div className="inner-header">
           <NavLink to={"/"}>
-            <ion-icon name="ios-home"></ion-icon>
-            <p>Home</p>
+            <ion-icon name="ios-compass"></ion-icon>
+            <p>Explore</p>
           </NavLink>
           <NavLink to={"/cities"}>
-            <ion-icon name="ios-navigate"></ion-icon>
+            <ion-icon name="ios-pin"></ion-icon>
             <p>Cities</p>
           </NavLink>
           <NavLink to={"/itineraries"}>
@@ -18,8 +18,8 @@ export default class Footer extends React.Component {
             <p>Itineraries</p>
           </NavLink>
           <NavLink to={"/"}>
-            <ion-icon name="ios-bonfire"></ion-icon>
-            <p>Activities</p>
+            <ion-icon name="ios-heart"></ion-icon>
+            <p>Favorites</p>
           </NavLink>
         </div>
       </div>

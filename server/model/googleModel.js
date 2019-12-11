@@ -13,6 +13,9 @@ const googleModel = new mongoose.Schema({
   googleid: {
     type: String,
     required: true
+  },
+  image: {
+    type: String
   }
 });
 

@@ -18,19 +18,19 @@ passport.use(
     function(accessToken, refreshToken, profile, cb) {
       googleModel.findOne({ googleid: profile.id }).then(currentUser => {
         if (currentUser) {
-          console.log("user is: ", currentUser);
+          console.log(currentUser);
           cb(null, currentUser);
         } else {
           const newUser = new googleModel({
             name: profile.displayName,
             email: profile.emails[0].value,
-            googleid: profile.id
+            googleid: profile.id,
+            image: profile.photos[0].value
           })
             .save()
             .then(newUser => {
-              console.log("new user created: ", newUser);
+              cb(null, newUser);
             });
-          cb(null, newUser);
         }
       });
     }

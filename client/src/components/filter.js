@@ -6,13 +6,14 @@ export default class filter extends Component {
   };
   render() {
     return (
-      <div className="inner">
+      <div className="filter">
         <input
           label="search"
           type="text"
           className="inputField"
           onChange={this.getFilter}
           placeholder="type here to filter..."
+          autoFocus
         ></input>
       </div>
     );

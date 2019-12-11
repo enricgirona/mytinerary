@@ -6,7 +6,7 @@ import { register } from "../store/actions/authActions";
 
 import { clearErrors } from "../store/actions/errorActions";
 
-import Logout from "../components/logout.js";
+import { getPageName } from "../store/actions/pageActions";
 
 class Register extends Component {
   state = {
@@ -15,6 +15,10 @@ class Register extends Component {
     password: "",
     msg: null
   };
+
+  componentDidMount() {
+    this.props.getPageName("New Account");
+  }
 
   componentDidUpdate(prevProps) {
     const { error } = this.props;
@@ -57,10 +61,9 @@ class Register extends Component {
             <input type="email" name="email" id="email" placeholder="Email" onChange={this.onChange} />
             <label>Password</label>
             <input type="password" name="password" id="password" placeholder="Password" onChange={this.onChange} />
-            <button className="button">Register</button>
+            <button className="button1">Register</button>
             {this.state.msg ? <p>{this.state.msg}</p> : null}
           </form>
-          <Logout />
         </div>
       </div>
     );
@@ -71,4 +74,4 @@ const mapStateToProps = state => ({
   error: state.errors
 });
 
-export default connect(mapStateToProps, { register, clearErrors })(Register);
+export default connect(mapStateToProps, { register, clearErrors, getPageName })(Register);

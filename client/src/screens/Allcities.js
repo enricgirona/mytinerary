@@ -1,12 +1,12 @@
 import React from "react";
 
-import GetCities from "../components/getcities";
+import CityList from "../components/citylist";
 
-//import Filter from "../components/filter";
+import Filter from "../components/filter";
 
 import { connect } from "react-redux";
 
-import { fetchCities } from "../store/actions/cityActions";
+import { getPageName } from "../store/actions/pageActions";
 
 class Cities extends React.Component {
   state = {
@@ -14,7 +14,7 @@ class Cities extends React.Component {
   };
 
   componentDidMount() {
-    this.props.fetchCities();
+    this.props.getPageName("Cities");
   }
 
   changeHandler = props => {
@@ -27,7 +27,8 @@ class Cities extends React.Component {
 
     return (
       <div className="main">
-        <GetCities cities={filteredCities} />
+        <Filter changeHandler={this.changeHandler} />
+        <CityList cities={filteredCities} />
       </div>
     );
   }
@@ -39,6 +40,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { fetchCities })(Cities);
-
-//<Filter changeHandler={this.changeHandler} />
+export default connect(mapStateToProps, { getPageName })(Cities);

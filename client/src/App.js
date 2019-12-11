@@ -1,8 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Landing from "./screens/Landing.js";
-import Cities from "./screens/Cities.js";
-import Itineraries from "./screens/Itineraries.js";
+import AllCities from "./screens/Allcities.js";
+import Explore from "./screens/Explore.js";
 import Footer from "./components/footer";
 import Header from "./components/header";
 import Allitineraries from "./screens/Allitineraries.js";
@@ -10,13 +9,18 @@ import { loadUser } from "./store/actions/authActions.js";
 import { connect } from "react-redux";
 import Register from "./screens/Register";
 import Login from "./screens/Login";
+import SingleCity from "./screens/SingleCity";
+import { fetchCities } from "../src/store/actions/cityActions";
+import { fetchAllItineraries } from "../src/store/actions/itineraryActions";
+import { fetchActivities } from "../src/store/actions/activityActions";
+import Profile from "../src/screens/Profile";
+import Loader from "../src/components/loader";
 
 class App extends React.Component {
-  state = {
-    pageName: "Explore"
-  };
-
   componentDidMount() {
+    this.props.fetchCities();
+    this.props.fetchAllItineraries();
+    this.props.fetchActivities();
     var url_string = window.location.href;
     var url = new URL(url_string);
     var token = url.searchParams.get("token");
@@ -31,13 +35,15 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <div className="App">
-          <Header currentPage={this.state.pageName} />
+          {this.props.itineraries && this.props.cities ? null : <Loader />}
+          <Header />
           <Switch>
-            <Route exact path="/" component={Landing} />
-            <Route exact path="/cities" component={Cities} />
-            <Route path="/itineraries/:name" component={Itineraries} />
+            <Route exact path="/" component={Explore} />
+            <Route exact path="/cities" component={AllCities} />
+            <Route path="/itineraries/:name" component={SingleCity} />
             <Route exact path="/itineraries/" component={Allitineraries} />
             <Route exact path="/register" component={Register} />
+            <Route exact path="/profile" component={Profile} />
             <Route exact patch="/login" component={Login} />
           </Switch>
           <Footer />
@@ -47,4 +53,11 @@ class App extends React.Component {
   }
 }
 
-export default connect(null, { loadUser })(App);
+const mapStateToProps = state => {
+  return {
+    itineraries: state.itineraries,
+    cities: state.cities
+  };
+};
+
+export default connect(mapStateToProps, { fetchCities, fetchAllItineraries, fetchActivities, loadUser })(App);

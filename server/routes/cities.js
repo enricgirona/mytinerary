@@ -6,7 +6,7 @@ const router = express.Router();
 
 const auth = require("../../middleware/auth");
 
-router.get("/test", (req, res) => {
+router.get("/test", auth, (req, res) => {
   res.send({ msg: "Cities test route." });
 });
 
