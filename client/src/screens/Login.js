@@ -62,7 +62,7 @@ class Login extends Component {
             <button className="button1">Login</button>
 
             <button className="button1">
-              <a href="http://localhost:5000/auth/google">Login with Google</a>
+              <a href="https://mytinerary-app.herokuapp.com/auth/google">Login with Google</a>
             </button>
           </form>
 
