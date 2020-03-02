@@ -13,7 +13,6 @@ export default class filter extends Component {
           className="inputField"
           onChange={this.getFilter}
           placeholder="type here to filter..."
-          autoFocus
         ></input>
       </div>
     );
