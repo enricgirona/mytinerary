@@ -1,13 +1,14 @@
 
 {
-  "name": "app",
+  "name": "server",
   "version": "1.0.0",
-  "description": "mytinerary app",
-  "main": " cd server server.js",
-  “scripts”: {
-“start”: “cd server && npm install && node index.js”,
-“heroku-postbuild”: “cd client && npm install && npm run build”
-},
+  "description": "mytinerary server",
+  "main": "server.js",
+  "scripts": {
+    "start": "cd server && npm install && node index.js",
+    "heroku-postbuild": "cd client && npm install && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "author": "Enric Girona",
   "license": "ISC",
   "dependencies": {
@@ -24,8 +25,4 @@
     "passport-google-oauth20": "^2.0.0"
   }
 }
-
-
-
-
 
