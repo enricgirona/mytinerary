@@ -47,7 +47,7 @@ router.get(
 router.get("/callback", passport.authenticate("google"), (req, res, cb) => {
   let token = jwt.sign({ id: req.user.id }, config.get("secret"), { expiresIn: "1h" });
 
-  res.redirect("http://localhost:3000?token=" + token);
+  res.redirect("https://mytinerary-app.herokuapp.com/?token=" + token);
 
   cb(null, res);
 });
