@@ -19,10 +19,26 @@ class header extends Component {
   render() {
     let pic;
     if (this.props.user) {
-      var userpic = this.props.user.image;
-      pic = <img className="small-profile-pic" alt="profile-pic" src={userpic}></img>;
+      if (this.props.user.image) {
+        var userpic = this.props.user.image;
+        pic = (
+          <div className="toggle">
+            <img className="small-profile-pic" alt="profile-pic" src={userpic}></img>
+          </div>
+        );
+      } else {
+        pic = (
+          <div>
+            <ion-icon name="ios-contact" />
+          </div>
+        );
+      }
     } else {
-      pic = <ion-icon name="ios-contact" />;
+      pic = (
+        <div>
+          <ion-icon name="ios-contact" />
+        </div>
+      );
     }
     return (
       <div className="header">
@@ -33,9 +49,7 @@ class header extends Component {
             </div>
           </NavLink>
           <p className="page-title">{this.props.currentpage}</p>
-          <NavLink to={this.props.logged ? "/profile" : "/login"}>
-            <div className="toggle">{pic}</div>
-          </NavLink>
+          <NavLink to={this.props.logged ? "/profile" : "/login"}>{pic}</NavLink>
         </div>
       </div>
     );

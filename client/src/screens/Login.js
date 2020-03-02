@@ -53,13 +53,14 @@ class Login extends Component {
     return (
       <div className="main">
         <div className="inner">
+          {this.state.msg ? <p>{this.state.msg}</p> : null}
           <form className="form" onSubmit={this.onSubmit}>
             <label>Email</label>
             <input type="email" name="email" id="email" placeholder="Email" onChange={this.onChange} />
             <label>Password</label>
             <input type="password" name="password" id="password" placeholder="Password" onChange={this.onChange} />
             <button className="button1">Login</button>
-            {this.state.msg ? <p>{this.state.msg}</p> : null}
+
             <button className="button1">
               <a href="http://localhost:5000/auth/google">Login with Google</a>
             </button>

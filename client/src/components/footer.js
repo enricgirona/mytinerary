@@ -17,7 +17,7 @@ export default class Footer extends React.Component {
             <ion-icon name="ios-map"></ion-icon>
             <p>Itineraries</p>
           </NavLink>
-          <NavLink to={"/"}>
+          <NavLink to={"/favorites"}>
             <ion-icon name="ios-heart"></ion-icon>
             <p>Favorites</p>
           </NavLink>

@@ -8,3 +8,12 @@ export const fetchActivities = itineraryID => dispatch => {
     });
   });
 };
+
+export const fetchAllActivities = () => dispatch => {
+  axios.get("/activities/all").then(res => {
+    dispatch({
+      type: "GET_ALL_ACTIVITIES",
+      payload: res.data
+    });
+  });
+};

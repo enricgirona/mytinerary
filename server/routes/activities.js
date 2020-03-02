@@ -8,6 +8,16 @@ router.get("/test", (req, res) => {
   res.send({ msg: "Activities test route." });
 });
 
+/*get all activities*/
+router.get("/all", (req, res) => {
+  activityModel
+    .find({})
+    .then(files => {
+      res.send(files);
+    })
+    .catch(err => console.log(err));
+});
+
 /*get activities within an itinerary_id*/
 router.get("/:itinerary_id", (req, res) => {
   let itinerary_id = req.params.itinerary_id;

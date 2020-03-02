@@ -14,7 +14,7 @@ class Profile extends Component {
     if (this.props.user) {
       var username = this.props.user.name;
       var usermail = this.props.user.email;
-      var userpic = this.props.user.image;
+      var userpic = this.props.user.image || "https://pbs.twimg.com/profile_images/716487122224439296/HWPluyjs.jpg";
     }
     return (
       <div className="main-container">

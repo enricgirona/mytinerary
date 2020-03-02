@@ -27,7 +27,7 @@ class Cities extends React.Component {
   render() {
     const { cities } = this.props.cities;
     return (
-      <div className="main">
+      <div className="main no-x-scroll">
         <GetCities cities={cities.filter(city => city.name.toLowerCase().match(this.state.activeCity.toLowerCase()))} />
       </div>
     );

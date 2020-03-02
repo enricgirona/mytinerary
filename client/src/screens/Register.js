@@ -54,6 +54,7 @@ class Register extends Component {
     return (
       <div className="main">
         <div className="inner">
+          {this.state.msg ? <p>{this.state.msg}</p> : null}
           <form className="form" onSubmit={this.onSubmit}>
             <label>Name</label>
             <input type="text" name="name" id="name" placeholder="Name" onChange={this.onChange} />
@@ -61,8 +62,8 @@ class Register extends Component {
             <input type="email" name="email" id="email" placeholder="Email" onChange={this.onChange} />
             <label>Password</label>
             <input type="password" name="password" id="password" placeholder="Password" onChange={this.onChange} />
-            <button className="button1">Register</button>
-            {this.state.msg ? <p>{this.state.msg}</p> : null}
+
+            <button className="button1">Sign Up</button>
           </form>
         </div>
       </div>

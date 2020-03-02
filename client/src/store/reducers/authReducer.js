@@ -40,6 +40,11 @@ const authReducer = (state = initialState, action) => {
         isAuthenticated: false,
         isLoading: false
       };
+    case "FAVORITE_ADDED":
+      return {
+        ...state,
+        favorites: action.payload.favorites
+      };
     default:
       return state;
   }

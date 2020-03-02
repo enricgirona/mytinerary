@@ -12,15 +12,17 @@ import Login from "./screens/Login";
 import SingleCity from "./screens/SingleCity";
 import { fetchCities } from "../src/store/actions/cityActions";
 import { fetchAllItineraries } from "../src/store/actions/itineraryActions";
-import { fetchActivities } from "../src/store/actions/activityActions";
+import { fetchAllActivities } from "../src/store/actions/activityActions";
 import Profile from "../src/screens/Profile";
-import Loader from "../src/components/loader";
+import Favorites from "../src/screens/Favorites";
+import Landing from "../src/screens/Landing";
+//import Loader from "../src/components/loader";
 
 class App extends React.Component {
   componentDidMount() {
     this.props.fetchCities();
     this.props.fetchAllItineraries();
-    this.props.fetchActivities();
+    this.props.fetchAllActivities();
     var url_string = window.location.href;
     var url = new URL(url_string);
     var token = url.searchParams.get("token");
@@ -35,7 +37,6 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <div className="App">
-          {this.props.itineraries && this.props.cities ? null : <Loader />}
           <Header />
           <Switch>
             <Route exact path="/" component={Explore} />
@@ -44,7 +45,9 @@ class App extends React.Component {
             <Route exact path="/itineraries/" component={Allitineraries} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/profile" component={Profile} />
-            <Route exact patch="/login" component={Login} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/favorites" component={Favorites} />
+            <Route exact path="/landing" component={Landing} />
           </Switch>
           <Footer />
         </div>
@@ -60,4 +63,6 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { fetchCities, fetchAllItineraries, fetchActivities, loadUser })(App);
+export default connect(mapStateToProps, { fetchCities, fetchAllItineraries, fetchAllActivities, loadUser })(App);
+
+//{this.props.itineraries && this.props.cities ? null : <Loader />}

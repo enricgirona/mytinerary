@@ -33,7 +33,6 @@ export const login = ({ email, password }) => dispatch => {
     }
   };
   const body = JSON.stringify({ email, password });
-
   axios
     .post("/auth", body, config)
     .then(res =>
@@ -65,6 +64,43 @@ export const loadUser = () => (dispatch, getState) => {
       dispatch(returnErrors(err.response.data, err.response.status));
       dispatch({
         type: "AUTH_ERROR"
+      });
+    });
+};
+
+export const addFavorite = (_id, favorite) => (dispatch, getState) => {
+  let details = {
+    _id: _id,
+    favorite: favorite
+  };
+
+  let formBody = [];
+  for (let property in details) {
+    let encodedKey = encodeURIComponent(property);
+    let encodedValue = encodeURIComponent(details[property]);
+    formBody.push(encodedKey + "=" + encodedValue);
+  }
+  formBody = formBody.join("&");
+
+  const token = getState().auth.token;
+  const config = {
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+      "x-auth-token": token
+    }
+  };
+  axios
+    .post("/favorites/post", formBody, config)
+    .then(res =>
+      dispatch({
+        type: "FAVORITE_ADDED",
+        payload: res.data
+      })
+    )
+    .catch(err => {
+      dispatch(returnErrors(err.response.data, err.response.status, "FAVORITE_ERROR"));
+      dispatch({
+        type: "FAVORITE_ERROR"
       });
     });
 };

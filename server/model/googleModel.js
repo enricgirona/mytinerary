@@ -16,6 +16,9 @@ const googleModel = new mongoose.Schema({
   },
   image: {
     type: String
+  },
+  favorites: {
+    type: Array
   }
 });
 
